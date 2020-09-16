@@ -72,9 +72,6 @@ public class MainGUI{
 
     private JCheckBox Importance;
 
-
-
-
     MainGUI(){
         mainFrame = new JFrame("Divide Areas Algorithm For Optimal " +
                 "Multi-Robot Coverage Path Planning");
@@ -127,7 +124,6 @@ public class MainGUI{
         mainFrame.setVisible(true);
     }
 
-
     private void DefineRightPanel()
     {
         RightPanel = new JPanel();
@@ -149,7 +145,6 @@ public class MainGUI{
         gbc.insets = new Insets(2, 2, 2, 2);
         RightPanel.add(ConsolePanel,gbc);
     }
-
 
     private void DefineGridDimensions() {
         UserInputPanel.setBackground(Color.white);
@@ -220,7 +215,6 @@ public class MainGUI{
         UserInputPanel.add(SecondOption);
     }
 
-
     class BrowseL implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
@@ -246,7 +240,6 @@ public class MainGUI{
             }
         }
     }
-
 
     class IPHeavyTask extends SwingWorker<Integer,String>{
 
@@ -314,7 +307,6 @@ public class MainGUI{
             mainFrame.repaint();
         }
     }
-
 
     // The luminance method
     private BufferedImage toGray(BufferedImage original) {
@@ -434,7 +426,6 @@ public class MainGUI{
 
     }
 
-
     private int colorToRGB(int alpha, int red, int green, int blue) {
 
         int newPixel = 0;
@@ -447,9 +438,6 @@ public class MainGUI{
         return newPixel;
 
     }
-
-
-
 
     private void DefineConsole() {
         ConsolePanel = new JPanel();
@@ -471,7 +459,6 @@ public class MainGUI{
 
         ConsolePanel.add(scrollConsole);
     }
-
 
     private void DefineRobotsObstacles() {
 
@@ -588,7 +575,6 @@ public class MainGUI{
         retainData=false;
     }
 
-
     protected void DisplayFinalPanel() {
         UserInputPanel.removeAll();
         CurrentCompDisp=2;
@@ -678,7 +664,6 @@ public class MainGUI{
 
     }
 
-
     class SaveL implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
@@ -753,8 +738,6 @@ public class MainGUI{
         }
     }
 
-
-
     private void appendToPane(String msg, Color c) {
         StyleContext sc = StyleContext.getDefaultStyleContext();
         AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
@@ -779,7 +762,6 @@ public class MainGUI{
         }
     }
 
-
     private class JTextFieldLimit extends PlainDocument {
         private int limit;
 
@@ -796,7 +778,6 @@ public class MainGUI{
             }
         }
     }
-
 
     private class ResetCellsClass implements  ActionListener{
         public void actionPerformed(ActionEvent event){
@@ -824,7 +805,6 @@ public class MainGUI{
         }
     }
 
-
     private class CheckBoxActionClass implements ActionListener{
         public void actionPerformed(ActionEvent event){
             AbstractButton abstractButton = (AbstractButton) event.getSource();
@@ -844,7 +824,6 @@ public class MainGUI{
             mainFrame.repaint();
         }
     }
-
 
     private class ReturnToTheInitialGUI implements ActionListener{
         public void actionPerformed(ActionEvent event){
@@ -886,8 +865,6 @@ public class MainGUI{
             }
         }
     }
-
-
 
     private class SoftReturnAction implements ActionListener{
         public void actionPerformed(ActionEvent event){
@@ -939,7 +916,6 @@ public class MainGUI{
 
     }
 
-
     private class CurrentComponentToDisplay implements ActionListener{
         public void actionPerformed(ActionEvent event){
             if (event.getActionCommand().equals("Area division (DARP)") && CurrentCompDisp != 1) {
@@ -979,7 +955,6 @@ public class MainGUI{
 
     }
 
-
     private class submitRowsColsListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
             if (isNumeric(textboxRows.getText()) && isNumeric(textboxCols.getText()) && !textboxRows.getText().equals("0")
@@ -1004,7 +979,6 @@ public class MainGUI{
 
     }
 
-
     private class AbortDARPListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
             try {
@@ -1025,7 +999,6 @@ public class MainGUI{
             }*/
         }
     }
-
 
     private class AbortButton implements MouseListener{
 
@@ -1051,7 +1024,6 @@ public class MainGUI{
 
     }
 
-
     private class RunButton implements MouseListener{
 
         public void mouseEntered(MouseEvent e) {
@@ -1075,7 +1047,6 @@ public class MainGUI{
         }
 
     }
-
 
     private class StartDARP implements ActionListener{
 
@@ -1238,8 +1209,6 @@ public class MainGUI{
 
     }
 
-
-
     private int[][] makeGridBinary(){
         int[][] retM = new int[rows][cols];
         for (int i=0;i<rows;i++) {
@@ -1251,7 +1220,6 @@ public class MainGUI{
         }
         return retM;
     }
-
 
     private boolean[][] CalcRealBinaryReg(boolean[][] BinrayRobotRegion){
         boolean[][] RealBinrayRobotRegion = new boolean[2*rows][2*cols];
@@ -1273,10 +1241,6 @@ public class MainGUI{
         }
         return MSTs;
     }
-
-
-
-
 
     private boolean isNumeric(String s) {
         return s.matches("[-+]?\\d*\\.?\\d+");
@@ -1316,8 +1280,6 @@ public class MainGUI{
 
         return new Color(red, green, blue);
     }
-
-
 
     private class FinalPaths extends JPanel {
 
@@ -1545,7 +1507,6 @@ public class MainGUI{
 
     }
 
-
     static public class DashedLineIcon implements Icon
     {
         private Color color;
@@ -1579,9 +1540,6 @@ public class MainGUI{
             g.fillRect(x, y, dashWidth, dashHeight);
         }
     }
-
-
-
 
     private class DARPPane extends JPanel {
 
@@ -1659,8 +1617,6 @@ public class MainGUI{
         }
 
     }
-
-
 
     private class GridPane extends JPanel {
 
@@ -1752,7 +1708,6 @@ public class MainGUI{
         }
     }
 
-
     private class BoxListener extends MouseAdapter
     {
 
@@ -1776,7 +1731,6 @@ public class MainGUI{
             }
         }
     }
-
 
     private class ScalingLabel extends JLabel implements ComponentListener {
 
@@ -1804,7 +1758,6 @@ public class MainGUI{
         @Override
         public void componentShown(ComponentEvent e) {}
     }
-
 
     private class DrawADashedLine extends JPanel{
         Color robotColor;
@@ -1840,7 +1793,6 @@ public class MainGUI{
         }
     }
 
-
     private class MyDrawPanel extends JPanel{
 
         MyDrawPanel() {
@@ -1855,7 +1807,6 @@ public class MainGUI{
             g.fillRect(0,0,50,50);
         }
     }
-
 
     private class RobotCell extends  JPanel {
 
