@@ -22,54 +22,37 @@ import java.util.Vector;
  */
 
 public class MainGUI{
-
     private final ImageIcon run_Hover = new ImageIcon(getClass().getResource("resources/run_Hover.png"));
     private final ImageIcon run_Default = new ImageIcon(getClass().getResource("resources/run_Default.png"));
     private final ImageIcon run_Pressed = new ImageIcon(getClass().getResource("resources/run_Pressed.png"));
     private final ImageIcon abort_Hover = new ImageIcon(getClass().getResource("resources/abort_Hover.jpg"));
     private final ImageIcon abort_Default = new ImageIcon(getClass().getResource("resources/abort_Default.png"));
     private final ImageIcon abort_Pressed = new ImageIcon(getClass().getResource("resources/abort_Pressed.png"));
-
     private JFrame mainFrame;
-
     private JPanel UserInputPanel,ConsolePanel,RightPanel;
     private JTextField textboxRows,textboxCols,textBoxMaxIter,textBoxCCvariation,textBoxRandomLevel,textBoxMaxDiscr;
     private JLabel Title;
     private ButtonGroup Items;
-
     private MyDrawPanel ColorBox;
-
     private DARPPane DarpResult;
-
     private Color CurrColor = Color.MAGENTA;
-
     private JRadioButton ObstaclesButton;
     private JRadioButton EmptyButton;
     private JRadioButton RobotButton;
     private JButton RepaintDARP,AbortDARP,startExp;
     private JTextPane consoleToPrint;
-
     private GridPane ColorGrid;
-
     private double estimatedTime;
     private int [][] EnvironmentGrid;
-
     private JPanel SuperRadio;
     private FinalPaths mCPPResult;
-
     private Color[] ColorsNr;
     private int nr, EffectiveSize, maxCellsRobot, minCellsRobot,rows,cols, obs, CurrentIDXAdd, CurrentCompDisp, axisScale;
-
     private boolean retainData,imageMode = false;
-
     private JCheckBox checkBoxMSTs;
-
     private DARPHeavyTask DARPhelper;
-
     private byte[][] ByteImage;
-
     private JFileChooser fc, saveAS;
-
     private JCheckBox Importance;
 
     MainGUI(){
@@ -1882,5 +1865,4 @@ public class MainGUI{
     public static void main(String[] arg){
         new MainGUI();
     }
-
 }
