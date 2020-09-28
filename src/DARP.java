@@ -2,17 +2,14 @@
 import java.awt.*;
 import java.util.*;
 
-
 /**
  * Created by atkap on 5/16/2016.
  */
 public class DARP{
-
-
     private double variateWeight, randomLevel;
     private int rows,cols,nr,ob,maxIter ;
     private int[][] GridEnv;
-    private ArrayList<Integer[]> RobotsInit;
+    private ArrayList<Integer[]> RobotsInit; // Coordinates of where robots are initially
     private ArrayList<int[][]> BWlist;
     private int[][] A;
     private boolean [][] robotBinary;
@@ -26,26 +23,24 @@ public class DARP{
     private boolean canceled;
     private boolean UseImportance;
 
-
+    // Constructor
     public DARP(int r,int c, int[][] src, int iters, double vWeight, double rLevel, int discr, boolean imp){
-        this.rows =r;
-        this.cols = c;
-        this.GridEnv = deepCopyMatrix(src);
-        this.nr=0;
-        this.ob=0;
-        this.maxIter = iters;
-        this.RobotsInit = new ArrayList<>();
-        this.A = new int[rows][cols];
-        this.robotBinary = new boolean[rows][cols];
-        this.variateWeight = vWeight;
-        this.randomLevel = rLevel;
-        this.discr = discr;
-        this.canceled = false;
-        this.UseImportance = imp;
-        defineRobotsObstacles();
+        this.rows =r;                                   // input - rows
+        this.cols = c;                                  // input - cols
+        this.GridEnv = deepCopyMatrix(src);             
+        this.nr=0;                                      // initialization - nr counts the robots
+        this.ob=0;                                      // initialization - ob counts the obstacles
+        this.maxIter = iters;                           // input - maximum iterations
+        this.RobotsInit = new ArrayList<>();            
+        this.A = new int[rows][cols];                   
+        this.robotBinary = new boolean[rows][cols];     // initialization - RIP when True
+        this.variateWeight = vWeight;                   // input
+        this.randomLevel = rLevel;                      // input
+        this.discr = discr;                             // input
+        this.canceled = false;                          
+        this.UseImportance = imp;                       // input
+        defineRobotsObstacles();                        // function call - defineRobotObstacle
     }
-
-
     public void constructAssignmentM(){
 
         long startTime = System.nanoTime();
@@ -92,9 +87,6 @@ public class DARP{
         }
 
         success = false;
-
-
-
 
         ArrayList<double[][]> MetricMatrix = deepCopyListMatrix(AllDistances);
 
@@ -194,7 +186,6 @@ public class DARP{
         calculateRobotBinaryArrays();
     }
 
-
     private void calculateRobotBinaryArrays(){
         BinrayRobotRegions = new ArrayList<>();
         for (int r=0;r<nr;r++) {BinrayRobotRegions.add(new boolean[rows][cols]);}
@@ -206,8 +197,6 @@ public class DARP{
             }
         }
     }
-
-
     private double[][] FinalUpdateOnMetricMatrix(double[][] CM, double[][] RM, double[][] curentONe, float[][] CC){
         double[][] MMnew = new double[rows][cols];
 
@@ -219,8 +208,6 @@ public class DARP{
 
         return MMnew;
     }
-
-
     private double [][] generateRandomMatrix(){
 
         double [][] RandomMa = new double[rows][cols];
@@ -234,7 +221,6 @@ public class DARP{
 
         return  RandomMa;
     }
-
     private double[][] calculateCriterionMatrix(double[][] TilesImp, double minImp, double maxImp, double corMult, boolean SmallerThan0){
         double[][] retrunCriter = new double[rows][cols];
 
@@ -254,8 +240,6 @@ public class DARP{
 
         return retrunCriter;
     }
-
-
     private boolean isThisAGoalState(int thres){
         maxCellsAss=0;
         minCellsAss = Integer.MAX_VALUE;
@@ -284,8 +268,6 @@ public class DARP{
         return (maxCellsAss-minCellsAss)<=thres;
 
     }
-
-
     private float[][] CalcConnectedMultiplier(float[][] dist1, float[][] dist2){
         float[][] returnM = new float[rows][cols];
         float MaxV = 0;
@@ -306,7 +288,6 @@ public class DARP{
 
         return  returnM;
     }
-
     private void assign(ArrayList<double[][]> Q) {
 
         BWlist = new ArrayList<>();
@@ -335,23 +316,18 @@ public class DARP{
         }
 
     }
-
-
-
     private double EuclideanDis(double[] a, double[] b){
         int vecSize = a.length;
         double d=0.0;
         for (int i =0;i<vecSize;i++){d+= Math.pow(a[i] - b[i],2.0);}
         return Math.sqrt(d);
     }
-
     private double EuclideanDis(Integer[] a, Integer[] b){
         int vecSize = a.length;
         double d=0.0;
         for (int i =0;i<vecSize;i++){d+= Math.pow(a[i] - b[i],2.0);}
         return Math.sqrt(d);
     }
-
     private int[][] deepCopyMatrix(int[][] input) {
         if (input == null)
             return null;
@@ -361,7 +337,6 @@ public class DARP{
         }
         return result;
     }
-
     private ArrayList<double[][]> deepCopyListMatrix(ArrayList<double[][]> input){
         if (input == null)
             return null;
@@ -371,7 +346,6 @@ public class DARP{
         }
         return result;
     }
-
     private double[][] deepCopyMatrix(double[][] input) {
         if (input == null)
             return null;
@@ -381,21 +355,18 @@ public class DARP{
         }
         return result;
     }
-
     private int[] deepCopyMatrix(int[] input) {
         if (input == null)
             return null;
         int[] result = input.clone();
         return result;
     }
-
     private double[] deepCopyMatrix(double[] input) {
         if (input == null)
             return null;
         double[] result = input.clone();
         return result;
     }
-
     private float[][] deepCopyMatrix(float[][] input) {
         if (input == null)
             return null;
@@ -405,28 +376,25 @@ public class DARP{
         }
         return result;
     }
-
-
     private void defineRobotsObstacles(){
         for(int i=0;i<rows;i++){
             for (int j=0;j<cols;j++){
                 if (GridEnv[i][j]==2) {
                     robotBinary[i][j] = true;
                     RobotsInit.add(new Integer[]{i,j});
-                    GridEnv[i][j]=nr;
-                    A[i][j]=nr;
-                    nr++;
+                    GridEnv[i][j]=nr; // GridEnv gets overwritten with that  robot index
+                    A[i][j]=nr; // Assignment matrix at the robot IP should be assigned to that robot
+                    nr++; // Increment robot
                 }
                 else if (GridEnv[i][j]==1) {
-                    ob++;
-                    GridEnv[i][j]=-2;
-                } else {GridEnv[i][j]=-1;}
+                    ob++; // Increment number of obstacles
+                    GridEnv[i][j]=-2; // Set GridEnv to -2 at that point
+                } else {GridEnv[i][j]=-1;} // Every slot that is not a RIP or a Obstacle gets assigned -1
             }
         }
 
         ConnectedRobotRegions = new boolean[nr];
     }
-
     private void printMatrix(int[][] M){
         int r = M.length;
         int c = M[0].length;
@@ -439,7 +407,6 @@ public class DARP{
             System.out.println();
         }
     }
-
     private void printMatrix(float[][] M){
         int r = M.length;
         int c = M[0].length;
@@ -452,7 +419,6 @@ public class DARP{
             System.out.println();
         }
     }
-
     private void printMatrix(double[][] M){
         int r = M.length;
         int c = M[0].length;

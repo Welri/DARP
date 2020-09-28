@@ -54,11 +54,8 @@ public class ConnectComponent
                 locIDX++;
             }
         }
-
-
         return label2d;
     }
-
     public int[] TransformImage2Dto1D(int[][] a, Dimension d){
         int[] ret = new int[d.height*d.width];
         int k=0;
@@ -71,14 +68,11 @@ public class ConnectComponent
 
         return ret;
     }
-
     /**
      * return the max label in the labeling process.
      * the range of labels is [0..max_label]
      */
     public int getMaxLabel() {return next_label;}
-
-
     /**
      * Label the connect components
      * If label 0 is background, then label 0 is untouched;
@@ -164,7 +158,6 @@ public class ConnectComponent
             else parent[y] = x;
         }
     }
-
     /**
      * This function is called to return the root label
      * Returned label starts from 1 because label array is inited to 0 as first
@@ -180,8 +173,6 @@ public class ConnectComponent
             label[x] = next_label++;
         return label[x];
     }
-
-
     public void constructBinaryImages(int robotsLabel){
 
         BinaryRobot = deepCopyMatrix(label2d);
@@ -199,8 +190,6 @@ public class ConnectComponent
             }
         }
     }
-
-
     private int[][] deepCopyMatrix(int[][] input) {
         if (input == null)
             return null;
@@ -210,8 +199,6 @@ public class ConnectComponent
         }
         return result;
     }
-
-
     /**
      * Calculate the normalized euclidean distance transform of a binary image with
      * foreground pixels set to 1 and background set to 0.
@@ -264,7 +251,6 @@ public class ConnectComponent
 
         return Region;
     }
-
     private void DT1D(float [] f, float [] d, int [] v , float [] z) {
         int k = 0;
         v[0] = 0;
@@ -291,7 +277,6 @@ public class ConnectComponent
             d[q] = (q - v[k]) * (q - v[k]) + f[v[k]];
         }
     }
-
     private float[] getVector(float[][] A, int row) {
         float[] ret = new float[cols];
 

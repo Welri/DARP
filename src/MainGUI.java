@@ -128,7 +128,6 @@ public class MainGUI{
         gbc.insets = new Insets(2, 2, 2, 2);
         RightPanel.add(ConsolePanel,gbc);
     }
-
     private void DefineGridDimensions() {
         UserInputPanel.setBackground(Color.white);
 
@@ -197,7 +196,6 @@ public class MainGUI{
         UserInputPanel.add(FirstOption);
         UserInputPanel.add(SecondOption);
     }
-
     class BrowseL implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
@@ -223,7 +221,6 @@ public class MainGUI{
             }
         }
     }
-
     class IPHeavyTask extends SwingWorker<Integer,String>{
 
         BufferedImage image;
@@ -290,7 +287,6 @@ public class MainGUI{
             mainFrame.repaint();
         }
     }
-
     // The luminance method
     private BufferedImage toGray(BufferedImage original) {
 
@@ -320,7 +316,6 @@ public class MainGUI{
 
         return lum;
     }
-
     private BufferedImage binarize(BufferedImage original) {
 
         int red;
@@ -351,7 +346,6 @@ public class MainGUI{
         return binarized;
 
     }
-
     // Get binary treshold using Otsu's method
     private int otsuTreshold(BufferedImage original) {
 
@@ -390,7 +384,6 @@ public class MainGUI{
         return threshold;
 
     }
-
     // Return histogram of grayscale image
     public int[] imageHistogram(BufferedImage input) {
 
@@ -408,7 +401,6 @@ public class MainGUI{
         return histogram;
 
     }
-
     private int colorToRGB(int alpha, int red, int green, int blue) {
 
         int newPixel = 0;
@@ -421,7 +413,6 @@ public class MainGUI{
         return newPixel;
 
     }
-
     private void DefineConsole() {
         ConsolePanel = new JPanel();
         ConsolePanel.setBackground(Color.white);
@@ -442,7 +433,6 @@ public class MainGUI{
 
         ConsolePanel.add(scrollConsole);
     }
-
     private void DefineRobotsObstacles() {
 
         UserInputPanel.removeAll();
@@ -557,7 +547,6 @@ public class MainGUI{
 
         retainData=false;
     }
-
     protected void DisplayFinalPanel() {
         UserInputPanel.removeAll();
         CurrentCompDisp=2;
@@ -646,7 +635,6 @@ public class MainGUI{
         UserInputPanel.add(superStats);
 
     }
-
     class SaveL implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
@@ -720,7 +708,6 @@ public class MainGUI{
             }
         }
     }
-
     private void appendToPane(String msg, Color c) {
         StyleContext sc = StyleContext.getDefaultStyleContext();
         AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
@@ -734,7 +721,6 @@ public class MainGUI{
         consoleToPrint.replaceSelection(msg);
         consoleToPrint.setEditable(false);
     }
-
     private void enableComponents(Container container, boolean enable) {
         Component[] components = container.getComponents();
         for (Component component : components) {
@@ -744,7 +730,6 @@ public class MainGUI{
             }
         }
     }
-
     private class JTextFieldLimit extends PlainDocument {
         private int limit;
 
@@ -761,7 +746,6 @@ public class MainGUI{
             }
         }
     }
-
     private class ResetCellsClass implements  ActionListener{
         public void actionPerformed(ActionEvent event){
             Object[] options = {"Yes", "Cancel"};
@@ -787,7 +771,6 @@ public class MainGUI{
             }
         }
     }
-
     private class CheckBoxActionClass implements ActionListener{
         public void actionPerformed(ActionEvent event){
             AbstractButton abstractButton = (AbstractButton) event.getSource();
@@ -797,7 +780,6 @@ public class MainGUI{
             mainFrame.repaint();
         }
     }
-
     private class RepaintDARPclasss implements ActionListener{
         public void actionPerformed(ActionEvent event){
             for (int r=0;r<nr;r++){ColorsNr[r]=generateRandomColor(null);}
@@ -807,7 +789,6 @@ public class MainGUI{
             mainFrame.repaint();
         }
     }
-
     private class ReturnToTheInitialGUI implements ActionListener{
         public void actionPerformed(ActionEvent event){
             Object[] options = {"Yes, I want to start over", "Cancel"};
@@ -848,7 +829,6 @@ public class MainGUI{
             }
         }
     }
-
     private class SoftReturnAction implements ActionListener{
         public void actionPerformed(ActionEvent event){
             Object[] options = {"Yes, continue", "Cancel"};
@@ -878,7 +858,6 @@ public class MainGUI{
             }
         }
     }
-
     private class CurrentComponentToAdd implements ActionListener{
         public void actionPerformed(ActionEvent event){
             if (event.getActionCommand().equals("Robot") && CurrentIDXAdd != 2) {
@@ -898,7 +877,6 @@ public class MainGUI{
         }
 
     }
-
     private class CurrentComponentToDisplay implements ActionListener{
         public void actionPerformed(ActionEvent event){
             if (event.getActionCommand().equals("Area division (DARP)") && CurrentCompDisp != 1) {
@@ -937,7 +915,6 @@ public class MainGUI{
         }
 
     }
-
     private class submitRowsColsListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
             if (isNumeric(textboxRows.getText()) && isNumeric(textboxCols.getText()) && !textboxRows.getText().equals("0")
@@ -961,7 +938,6 @@ public class MainGUI{
         }
 
     }
-
     private class AbortDARPListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
             try {
@@ -982,7 +958,6 @@ public class MainGUI{
             }*/
         }
     }
-
     private class AbortButton implements MouseListener{
 
         public void mouseEntered(MouseEvent e) {
@@ -1006,7 +981,6 @@ public class MainGUI{
         }
 
     }
-
     private class RunButton implements MouseListener{
 
         public void mouseEntered(MouseEvent e) {
@@ -1030,11 +1004,8 @@ public class MainGUI{
         }
 
     }
-
     private class StartDARP implements ActionListener{
-
         public void actionPerformed(ActionEvent event){
-
             if (!isInteger(textBoxMaxDiscr.getText())){
                 appendToPane("The maximum number of allowed cells' discrepancy is not a positive integer\n\n", Color.WHITE);
                 return;
@@ -1096,11 +1067,8 @@ public class MainGUI{
 
             mainFrame.setVisible(true);
             mainFrame.repaint();
-
         }
-
     }
-
     class DARPHeavyTask extends SwingWorker<Integer,String>{
 
         private DARP p;
@@ -1191,7 +1159,6 @@ public class MainGUI{
         }
 
     }
-
     private int[][] makeGridBinary(){
         int[][] retM = new int[rows][cols];
         for (int i=0;i<rows;i++) {
@@ -1203,7 +1170,6 @@ public class MainGUI{
         }
         return retM;
     }
-
     private boolean[][] CalcRealBinaryReg(boolean[][] BinrayRobotRegion){
         boolean[][] RealBinrayRobotRegion = new boolean[2*rows][2*cols];
         for (int i=0;i<2*rows;i++){
@@ -1213,7 +1179,6 @@ public class MainGUI{
         }
         return RealBinrayRobotRegion;
     }
-
     private ArrayList<Vector> calculateMSTs(ArrayList<boolean[][]> BinrayRobotRegions, int nr){
         ArrayList<Vector> MSTs = new ArrayList<>();
         for (int r=0;r<nr;r++){
@@ -1224,11 +1189,9 @@ public class MainGUI{
         }
         return MSTs;
     }
-
     private boolean isNumeric(String s) {
         return s.matches("[-+]?\\d*\\.?\\d+");
     }
-
     private  boolean isInteger(String string) {
         try {
             Integer.parseInt(string);
@@ -1237,7 +1200,6 @@ public class MainGUI{
         }
         return true;
     }
-
     private  boolean isNumber(String string) {
         try {
             Double.parseDouble(string);
@@ -1246,7 +1208,6 @@ public class MainGUI{
         }
         return true;
     }
-
     private Color generateRandomColor(Color mix) {
         Random random = new Random();
         int red = random.nextInt(256);
@@ -1263,7 +1224,6 @@ public class MainGUI{
 
         return new Color(red, green, blue);
     }
-
     private class FinalPaths extends JPanel {
 
         int Nrob;
@@ -1489,7 +1449,6 @@ public class MainGUI{
         }
 
     }
-
     static public class DashedLineIcon implements Icon
     {
         private Color color;
@@ -1523,7 +1482,6 @@ public class MainGUI{
             g.fillRect(x, y, dashWidth, dashHeight);
         }
     }
-
     private class DARPPane extends JPanel {
 
         int Nrob;
@@ -1600,7 +1558,6 @@ public class MainGUI{
         }
 
     }
-
     private class GridPane extends JPanel {
 
         boolean enable=true;
@@ -1690,7 +1647,6 @@ public class MainGUI{
             repaint();
         }
     }
-
     private class BoxListener extends MouseAdapter
     {
 
@@ -1714,7 +1670,6 @@ public class MainGUI{
             }
         }
     }
-
     private class ScalingLabel extends JLabel implements ComponentListener {
 
         ScalingLabel(String text) {
@@ -1741,7 +1696,6 @@ public class MainGUI{
         @Override
         public void componentShown(ComponentEvent e) {}
     }
-
     private class DrawADashedLine extends JPanel{
         Color robotColor;
         int[] dir;
@@ -1775,7 +1729,6 @@ public class MainGUI{
             repaint();
         }
     }
-
     private class MyDrawPanel extends JPanel{
 
         MyDrawPanel() {
@@ -1790,7 +1743,6 @@ public class MainGUI{
             g.fillRect(0,0,50,50);
         }
     }
-
     private class RobotCell extends  JPanel {
 
         @Override
@@ -1861,7 +1813,6 @@ public class MainGUI{
 
         }
     }
-
     public static void main(String[] arg){
         new MainGUI();
     }
