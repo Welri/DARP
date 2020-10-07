@@ -185,7 +185,6 @@ public class DARP{
         elapsedTime = (double)(System.nanoTime() - startTime)/Math.pow(10,9);
         calculateRobotBinaryArrays();
     }
-
     private void calculateRobotBinaryArrays(){
         BinrayRobotRegions = new ArrayList<>();
         for (int r=0;r<nr;r++) {BinrayRobotRegions.add(new boolean[rows][cols]);}
