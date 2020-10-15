@@ -159,7 +159,6 @@ public class DARP{
 
                         //correctionMult[r]=1.0 -(divFairError[r]/(TotalNegPerc*nr))*(totalNegPlainErrors/2.0);
 
-
                         if (divFairError[r]<0.0) {
                             correctionMult[r] = 1.0 + (plainErrors[r] / totalNegPlainErrors) * (TotalNegPerc / 2.0);
                         }
