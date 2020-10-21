@@ -1072,6 +1072,7 @@ public class MainGUI{
     class DARPHeavyTask extends SwingWorker<Integer,String>{
 
         private DARP p;
+        
 
         DARPHeavyTask(DARP problem){
             this.p = problem;
