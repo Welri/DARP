@@ -247,8 +247,6 @@ public class ConnectComponent
                     Region[y][x] = (Region[y][x] - minV) * (1/(maxV-minV));
             }
         }
-
-
         return Region;
     }
     private void DT1D(float [] f, float [] d, int [] v , float [] z) {
