@@ -445,6 +445,4 @@ public class DARP{
     public int getMaxIter() {return  maxIter;}
     public void setCanceled(boolean c) {this.canceled=c;}
     public int getAchievedDiscr() {return maxCellsAss-minCellsAss;}
-
-
 }
