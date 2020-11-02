@@ -1073,6 +1073,7 @@ public class MainGUI{
 
         private DARP p;
         
+        
 
         DARPHeavyTask(DARP problem){
             this.p = problem;
