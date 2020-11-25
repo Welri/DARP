@@ -256,7 +256,7 @@ public class ConnectComponent
 
         for (int q = 1; q < f.length; q++) {
             float s  = ((f[q] + q * q) - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k]);
-
+            
             while (s <= z[k]) {
                 k--;
                 s  = ((f[q] + q * q) - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k]);
